@@ -6,8 +6,7 @@ const fetchPrice = async () => {
       "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr"
     );
     const price = await priceModel.create({
-      price: response.ethereum.inr,
-      time: Date.now(),
+      price: response.data.ethereum.inr,
     });
     console.log(price);
   } catch (error) {

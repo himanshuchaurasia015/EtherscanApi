@@ -7,6 +7,7 @@ const priceSchema = mongoose.Schema({
   },
   time: {
     type: Date,
+    default: Date.now,
   },
 });
 
