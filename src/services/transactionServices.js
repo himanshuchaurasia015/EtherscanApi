@@ -31,3 +31,5 @@ const fetchTransaction = async (address) => {
     throw new Error("Failed to fetch or save transactions");
   }
 };
+
+module.exports = { fetchTransaction };
