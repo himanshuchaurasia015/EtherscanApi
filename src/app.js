@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const axios = require("axios");
 const dbConnection = require("./config/db");
 const transactionRoutes = require("./routes/transactionRoutes");
+const errorHandler = require("./utils/errorHandler");
 
 app.use(express.json());
-app.use("/api/address", transactionRoutes);
+app.use("/api/v1/address", transactionRoutes);
+app.use(errorHandler);
+
 dotenv.config();
 dbConnection();
 

@@ -15,8 +15,8 @@ const getTransactions = async (req, res) => {
   } else {
     res.status(200).json({
       message: "Transactions fetched and stored successfully",
-      address: result.address,
-      transactions: result.transactions,
+      address: transaction.address,
+      transactions: transaction.transactions,
     });
   }
 };

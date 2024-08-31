@@ -3,11 +3,11 @@ const addModel = require("../models/transactionModel");
 
 const fetchTransaction = async (address) => {
   try {
-    const response = axios.get(`https://api.etherscan.io/api`, {
+    const response = await axios.get(`https://api.etherscan.io/api`, {
       params: {
         module: "account",
         action: "txlist",
-        address: "0xce94e5621a5f7068253c42558c147480f38b5e0d",
+        address: address,
         startblock: 0,
         endblock: 99999999,
         page: 1,
@@ -22,13 +22,13 @@ const fetchTransaction = async (address) => {
     if (addDocument) {
       addDocument.transactions = transactions;
     } else {
-      addDocument = await Address.create({ address, transactions });
+      addDocument = await addModel.create({ address, transactions });
     }
     await addDocument.save();
 
     return addDocument;
   } catch (error) {
-    throw new Error("Failed to fetch or save transactions");
+    throw new Error(`${error}`);
   }
 };
 
