@@ -1,4 +1,7 @@
 const transactionModel = require("../models/transactionModel");
+const priceModel = require("../models/etheriumPriceModel");
+
+//calculate the total expense using all transaction stored in db
 const calculateTotalExpenses = async (address) => {
   try {
     transactionDocument = await transactionModel.findOne({ address });
@@ -20,4 +23,14 @@ const calculateTotalExpenses = async (address) => {
   }
 };
 
-module.exports = { calculateTotalExpenses };
+//fetch latest price stored in db
+const getLatestPrice = async () => {
+  try {
+    const latestDoc = await priceModel.findOne().sort({ createdAt: -1 });
+    return latestDoc.price;
+  } catch (error) {
+    console.log("Error fetching the latest price:", error.message);
+  }
+};
+
+module.exports = { calculateTotalExpenses, getLatestPrice };

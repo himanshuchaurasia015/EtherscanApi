@@ -1,6 +1,7 @@
 const axios = require("axios");
 const addModel = require("../models/transactionModel");
 
+//fetch all the transaction and store in db
 const fetchTransaction = async (address) => {
   try {
     const response = await axios.get(`https://api.etherscan.io/api`, {

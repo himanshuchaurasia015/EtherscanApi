@@ -1,5 +1,7 @@
 const axios = require("axios");
 const priceModel = require("../models/etheriumPriceModel");
+
+//fetch price of etherium and store in db
 const fetchPrice = async () => {
   try {
     const response = await axios.get(
@@ -9,6 +11,7 @@ const fetchPrice = async () => {
       price: response.data.ethereum.inr,
     });
     console.log(price);
+    return response.data.ethereum.inr;
   } catch (error) {
     console.log(error);
   }
