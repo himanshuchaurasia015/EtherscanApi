@@ -5,6 +5,9 @@ const priceSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  time: {
+    type: Date.now(),
+  },
 });
 
 module.exports = mongoose.model("Prices", priceSchema);
