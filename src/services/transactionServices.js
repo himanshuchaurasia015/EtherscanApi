@@ -11,8 +11,6 @@ const fetchTransaction = async (address) => {
         address: address,
         startblock: 0,
         endblock: 99999999,
-        page: 1,
-        offset: 10,
         sort: "asc",
         apikey: process.env.APIKEY,
       },
