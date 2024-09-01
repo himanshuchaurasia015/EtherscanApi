@@ -8,7 +8,7 @@ const { fetchPrice } = require("./services/fetchCurrentPrice");
 app.use(express.json());
 app.use(errorHandler);
 
-app.use("/api/v1/address", transactionRoutes);
+app.use("/api/v1/transactions", transactionRoutes);
 app.use("/api/v1/expense", expenseRoutes);
 
 app.get("/", (req, res) => {

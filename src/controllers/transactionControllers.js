@@ -3,7 +3,7 @@ const { fetchTransaction } = require("../services/transactionServices.js");
 //fetch  all transaction and store in db and return transactions
 const getTransactions = async (req, res) => {
   try {
-    const { address } = req.body;
+    const { address } = req.query;
     if (!address) {
       return res.status(400).json({
         error: "address is undefined",
